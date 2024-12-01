@@ -1,0 +1,41 @@
+* {
+
+}
+
+html {
+
+}
+
+body {
+    max-width: 600px;
+    margin: 20% auto;
+    overflow: hidden;
+}
+
+.wrapper {
+    display: flex;
+    max-width: 50%;
+    flex-direction: column;
+    margin: auto;
+    gap: 2rem;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3rem;
+}
+
+label {
+    display: block;
+    text-align: center;
+    font-size: 2rem;
+}
+
+input, button {
+    height: 2.5rem;
+}
+
+button {
+    font-size: 1.2rem;
+}
+
