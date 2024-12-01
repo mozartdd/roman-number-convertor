@@ -1,7 +1,7 @@
 :root {
     --yellow: #FFB300;
     --red: #8E001C;
-    --marble: #F9F6EE;
+    --marble: #f9f6eef5;
 }
 
 html {
@@ -22,18 +22,21 @@ h1 {
     color: var(--yellow)
 }
 
-.container {
+.container, .output-container {
     padding: 2rem;
     background-color: var(--yellow);
+    margin: 20px auto;
+    max-width: 80%;
+    border: solid 4px var(--marble);
     border-radius: 10px;
 }
 
 .wrapper {
     display: flex;
-    max-width: 70%;
+    max-width: 80%;
     flex-direction: column;
     margin: auto;
-    gap: 2rem;
+    gap: 1rem;
     font-family: 'Times New Roman', Times, serif;
 }
 
@@ -54,6 +57,7 @@ input {
 
 input, button {
     height: 2.5rem;
+    border-radius: 5px;
 }
 
 button {
@@ -69,3 +73,11 @@ button:hover {
     background: linear-gradient(rgba(255, 179, 0, 0.5), rgba(142, 0, 28, 0.5));
 }
 
+#output {
+    color: var(--red);
+    font-size: 3rem;
+    margin: auto;
+    text-align: center;
+    height: 2rem;
+    padding-bottom: 2rem;
+}
