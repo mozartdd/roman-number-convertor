@@ -22,19 +22,19 @@ const convert = () => {
     if (!input.value) {
         output.innerHTML = `
         <div class="output-container">
-            <p style="font-size: 2rem" id="output">Please enter a valid number</p>
+            <p style="font-size: 1.5rem" id="output">Please enter a valid number</p>
         </div>
     `;
     } else if (input.value <= 0) {
         output.innerHTML = `
         <div class="output-container">
-            <p style="font-size: 2rem" id="output">Please enter a number greater than or equal to 1</p>
+            <p style="font-size: 1.5rem" id="output">Please enter a number greater than or equal to 1</p>
         </div>
     `;
     }  else if (input.value >= 4000) {
         output.innerHTML = `
         <div class="output-container">
-            <p style="font-size: 1.7rem" id="output">Please enter a number less than or equal to 3999</p>
+            <p style="font-size: 1.5rem" id="output">Please enter a number less than or equal to 3999</p>
         </div>
     `;
     } else {output.innerHTML = `
@@ -45,6 +45,7 @@ const convert = () => {
 input.value = "";
 }
 
+// Event listeners than connects btn and input
 input.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
         convert();
@@ -54,7 +55,11 @@ input.addEventListener("keydown", (e) => {
 btn.addEventListener("click", convert);
 
 const recursive = () => {
-    if (input.value === "1") {
-        return "I";
-    }
+    if (input.value <= 0) {
+        return output.innerHTML = `
+        <div class="output-container">
+            <p style="font-size: 1.5rem" id="output">Please enter a number greater than or equal to 1</p>
+        </div>
+    `;
+    } 
 }

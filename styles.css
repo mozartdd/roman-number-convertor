@@ -31,6 +31,10 @@ h1 {
     border-image: linear-gradient(90deg, #d51c1f, #ffcc33, #d51c1f) 1;
 }
 
+.output-container {
+    max-height: 50px;
+}
+
 .wrapper {
     display: flex;
     max-width: 80%;
