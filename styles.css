@@ -33,6 +33,8 @@ h1 {
 
 .output-container {
     max-height: 50px;
+    padding-bottom: 5rem;
+    padding-top: 0rem;
 }
 
 .wrapper {

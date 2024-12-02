@@ -2,50 +2,65 @@ const btn = document.querySelector("button");
 const input = document.querySelector("input");
 const output = document.querySelector("#output");
 const romanNumbers = [
-    { roman: "I", arabic: 1 },
-    { roman: "IV", arabic: 4 },
-    { roman: "V", arabic: 5 },
-    { roman: "IX", arabic: 9 },
-    { roman: "X", arabic: 10 },
-    { roman: "XL", arabic: 40 },
-    { roman: "L", arabic: 50 },
-    { roman: "XC", arabic: 90 },
-    { roman: "C", arabic: 100 },
-    { roman: "CD", arabic: 400 },
-    { roman: "D", arabic: 500 },
-    { roman: "CM", arabic: 900 },
-    { roman: "M", arabic: 1000 }
+    [1000, 'M'],
+    [900, 'CM'],
+    [500, 'D'],
+    [400, 'CD'],
+    [100, 'C'],
+    [90, 'XC'],
+    [50, 'L'],
+    [40, 'XL'],
+    [10, 'X'],
+    [9, 'IX'],
+    [5, 'V'],
+    [4, 'IV'],
+    [1, 'I']
 ];
 
-// Function that checks for input.value and gives relative output
-const convert = () => {
-    if (!input.value) {
-        output.innerHTML = `
-        <div class="output-container">
-            <p style="font-size: 1.5rem" id="output">Please enter a valid number</p>
-        </div>
-    `;
-    } else if (input.value <= 0) {
-        output.innerHTML = `
-        <div class="output-container">
-            <p style="font-size: 1.5rem" id="output">Please enter a number greater than or equal to 1</p>
-        </div>
-    `;
-    }  else if (input.value >= 4000) {
-        output.innerHTML = `
-        <div class="output-container">
-            <p style="font-size: 1.5rem" id="output">Please enter a number less than or equal to 3999</p>
-        </div>
-    `;
-    } else {output.innerHTML = `
-    <div class="output-container">
-        <p style="font-size: 3rem" id="output">${input.value}</p>
-    </div>
-    `;}
-input.value = "";
-}
+// Convert number to Roman numerals
+const toRoman = (num) => {
+    if (num <= 0) {
+        return null;
+    }
+    let result = '';
+    for (let [value, numeral] of romanNumbers) {
+        while (num >= value) {
+            result += numeral;
+            num -= value;
+        }
+    }
+    return result;
+};
 
-// Event listeners than connects btn and input
+// Function to handle conversion
+const convert = () => {
+    const num = parseInt(input.value, 10);
+    if (!num) {
+        output.innerHTML = `
+            <div class="output-container">
+                <p style="font-size: 1.5rem">Please enter a valid number</p>
+            </div>`;
+    } else if (num <= 0) {
+        output.innerHTML = `
+            <div class="output-container">
+                <p style="font-size: 1.5rem">Please enter a number greater than or equal to 1</p>
+            </div>`;
+    } else if (num >= 4000) {
+        output.innerHTML = `
+            <div class="output-container">
+                <p style="font-size: 1.5rem">Please enter a number less than or equal to 3999</p>
+            </div>`;
+    } else {
+        const romanNumeral = toRoman(num);
+        output.innerHTML = `
+            <div class="output-container">
+                <p style="font-size: 3rem;">${romanNumeral}</p>
+            </div>`;
+    }
+    input.value = "";
+};
+
+// Event listeners for input and button
 input.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
         convert();
@@ -53,13 +68,3 @@ input.addEventListener("keydown", (e) => {
 });
 
 btn.addEventListener("click", convert);
-
-const recursive = () => {
-    if (input.value <= 0) {
-        return output.innerHTML = `
-        <div class="output-container">
-            <p style="font-size: 1.5rem" id="output">Please enter a number greater than or equal to 1</p>
-        </div>
-    `;
-    } 
-}
